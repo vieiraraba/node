@@ -2,9 +2,11 @@
   "name": "node",
   "version": "1.0.0",
   "description": "Show movie info with an API",
-  "main": "bin/index.js",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -r esm app/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,13 +14,12 @@
     "hello": "./index.js"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "boxen": "4.0",
     "chalk": "2.4",
     "commander": "^9.4.0",
     "dotenv": "^16.0.2",
-    "nodemon": "^2.0.19",
-    "ora": "^6.1.2",
-    "yargs": "13.2"
+    "ora": "^6.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.19"
   }
 }

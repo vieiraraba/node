@@ -1,4 +1,3 @@
-# dependencies
-/node_modules
-# ignore ALL .log files
-*.env
+#local
+.env
+node_modules
