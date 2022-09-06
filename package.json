@@ -16,6 +16,8 @@
     "boxen": "4.0",
     "chalk": "2.4",
     "commander": "^9.4.0",
+    "dotenv": "^16.0.2",
+    "nodemon": "^2.0.19",
     "yargs": "13.2"
   }
 }
