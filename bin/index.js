@@ -1,20 +1,29 @@
-#!/usr/bin/env node
+import https from 'node:https';
+const APIKey = 'process.env.API_KEY';
 
-const yargs = require("yargs");
-const axios = require("axios");
-const apiKey = process.env.REACT_APP_API_KEY;
+// get popular people
+const getPopularPeople = (options) => {
+  const pageNumber = `${options.page}`
+  // console.log(options.options.page)
+    https.get(`https://api.themoviedb.org/3/person/popular?api_key=${APIKey}&page=${pageNumber}`, res => {
+        let data = [];
 
-const options = yargs
-  .usage("Usage: -n <name>")
-  .option("n", {
-    alias: "name",
-    describe: "Your name",
-    type: "string",
-    demandOption: true,
-  }).argv;
+        res.on('data', chunk => {
+          data.push(chunk);
+        });
 
-const greeting = `Hello, ${options.name}!`;
-console.log(greeting);
+        res.on('end', () => {
+          console.log('Response ended: ');
+          const results = JSON.parse(Buffer.concat(data).toString());
+          console.log(results)
+          for (let result in results) {
+            console.log(result)
+            
+          }
+        })
+      }).on('error', err => {
+        console.log('Error: ', err.message);
+      });
+}
 
-fetch(`https://api.themoviedb.org/3/movie/550?api_key=${apiKey}`)
-  .then(res => console.log(res))
+export default  getPopularPeople ;
